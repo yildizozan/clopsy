@@ -44,39 +44,24 @@ int main() {
 
 	// crypt
 	int valueTemp = 0;
-	for (int i = 0; i < 32; i++) // Crypt array elements
+	for (int i = 0; i <= 32; i++) // Crypt array elements
 	{
-		if (uncrypt[i] == 0 && i == 0)
+		if (uncrypt[i] == 0 && i == 0) // if enter nothing words, program generate random 
 		{
-			for (int i = 0; i < 32; i++)
+			for (int i = 0; i < 32; i++)	// all letter instead of random letter
 			{
 				srand(time(NULL));
-				//test
 				uncrypt[i] = rand() % 100;
 				Crypt cry(uncrypt[i], i);
 				Dictionary letter(cry.result() % 62);
 				cout << letter.text();
-			}
+			}	// for end
 			break;
-		}
+		}	// if end
 		else
 		{
+			Crypt cryptText(uncrypt[i-1], i-1);
 
-			if (i == 0)
-			{
-				Crypt n(uncrypt[i], i);
-				int k = n.result() * n.result();
-				k = k % 62;
-				Dictionary let(k);
-				cout << let.text();
-			}
-			else
-			{
-				Crypt n((uncrypt[i] + valueTemp), i);
-				int k = n.result() % 62;
-				Dictionary let(k);
-				cout << let.text();
-			}
 		}
 		
 	}
