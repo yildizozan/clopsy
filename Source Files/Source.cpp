@@ -1,6 +1,7 @@
 #include <iostream>
 #include <locale>
 #include <conio.h>
+#include <time.h>
 #include "Crypt.h"
 #include "Dictionary.h"
 
@@ -15,7 +16,8 @@ int main() {
 	char ch;					// char value
 	int count = 0;				// Count
 
-								//Array values is NULL
+
+	//Array values is NULL
 	for (int i = 0; i < 32; i++)
 	{
 		uncrypt[i] = NULL;
@@ -42,22 +44,41 @@ int main() {
 
 	// crypt
 	int valueTemp = 0;
-	for (int i = 0; i < 32; i++)
+	for (int i = 0; i < 32; i++) // Crypt array elements
 	{
-		if (i == 0)
+		if (uncrypt[i] == 0 && i == 0)
 		{
-			Crypt n(uncrypt[i], i);
-			int k = n.result() * n.result();
-			Dictionary let(k);
-			cout << let.text();
+			for (int i = 0; i < 32; i++)
+			{
+				srand(time(NULL));
+				//test
+				uncrypt[i] = rand() % 100;
+				Crypt cry(uncrypt[i], i);
+				Dictionary letter(cry.result() % 62);
+				cout << letter.text();
+			}
+			break;
 		}
 		else
 		{
-			Crypt n((uncrypt[i] + valueTemp), i);
-			int k = n.result() % 62;
-			Dictionary let(k);
-			cout << let.text();
+
+			if (i == 0)
+			{
+				Crypt n(uncrypt[i], i);
+				int k = n.result() * n.result();
+				k = k % 62;
+				Dictionary let(k);
+				cout << let.text();
+			}
+			else
+			{
+				Crypt n((uncrypt[i] + valueTemp), i);
+				int k = n.result() % 62;
+				Dictionary let(k);
+				cout << let.text();
+			}
 		}
+		
 	}
 	cout << endl;
 	system("PAUSE");
