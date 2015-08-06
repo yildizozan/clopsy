@@ -42,6 +42,7 @@ int main() {
 		}
 	}
 
+	cout << endl;
 	// crypt
 	int valueTemp = 0;
 	for (int i = 0; i <= 32; i++) // Crypt array elements
@@ -52,16 +53,18 @@ int main() {
 			{
 				srand(time(NULL));
 				uncrypt[i] = rand() % 100;
-				Crypt cry(uncrypt[i], i);
-				Dictionary letter(cry.result() % 62);
+				Crypt cryptText(uncrypt[i], i);
+				Dictionary letter(cryptText.result() % 62);
 				cout << letter.text();
 			}	// for end
 			break;
 		}	// if end
 		else
 		{
-			Crypt cryptText(uncrypt[i-1], i-1);
-
+			valueTemp += uncrypt[i - 1];
+			Crypt cryptText(uncrypt[i-1]+ valueTemp, i-1);
+			Dictionary letter(cryptText.result() % 62);
+			cout << letter.text();
 		}
 		
 	}
