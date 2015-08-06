@@ -59,7 +59,7 @@ int main() {
 			}	// for end
 			break;
 		}	// if end
-		else
+		else // if is there first character, generate other character crypt.
 		{
 			valueTemp += uncrypt[i - 1];
 			Crypt cryptText(uncrypt[i-1]+ valueTemp, i-1);
