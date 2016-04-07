@@ -17,7 +17,7 @@ int main() {
 	int count = 0;				// Count
 
 
-	//Array values is NULL
+								//Array values is NULL
 	for (int i = 0; i < 32; i++)
 	{
 		uncrypt[i] = NULL;
@@ -62,11 +62,11 @@ int main() {
 		else // if is there first character, generate other character crypt.
 		{
 			valueTemp += uncrypt[i - 1];
-			Crypt cryptText(uncrypt[i-1]+ valueTemp, i-1);
+			Crypt cryptText(uncrypt[i - 1] + valueTemp, i - 1);
 			Dictionary letter(cryptText.result() % 62);
 			cout << letter.text();
 		}
-		
+
 	}
 	cout << endl;
 	system("PAUSE");
