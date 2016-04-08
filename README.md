@@ -1,2 +1,3 @@
 # Clopsy
-Crypter
+###Crypter
+Üniversiteye ilk başladığımda ilk yaptığım hash generator.
